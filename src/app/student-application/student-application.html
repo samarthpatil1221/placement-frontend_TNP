@@ -1,46 +1,114 @@
-<!-- student-application.html -->
-<div class="applications-container">
-  <h2>Your Applications</h2>
+<!-- training-placement.component.html -->
+<div class="tp-page">
+  <!-- Header -->
+  <div class="tp-page-header">
+    <div class="tp-title-wrap">
+      <div class="tp-logo">📄</div>
+      <div>
+        <h1 class="tp-title">Training & Placement</h1>
+        <p class="tp-subtitle">Track and manage job applications</p>
+      </div>
+    </div>
+  </div>
 
-  <table *ngIf="applications.length > 0" class="app-table">
-    <tr>
-      <th>Company</th>
-      <th>Applied On</th>
-      <th>Status</th>
-      <th>Update</th>
-    </tr>
+  <!-- KPI Cards -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-icon">📊</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Total</span>
+        <span class="kpi-value">{{ applications.length }}</span>
+      </div>
+    </div>
 
-    <tr *ngFor="let app of applications">
-      <td class="company-cell">{{ app.companyName }}</td>
-      <td>{{ app.appliedAt | date:'medium' }}</td>
+    <div class="kpi-card">
+      <div class="kpi-icon">🕒</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Pending</span>
+        <span class="kpi-value">{{ applications | pendingCount }}</span>
+      </div>
+    </div>
 
-      <td>
-        <span class="status-pill"
-              [class.pending]="normalizeStudentStatus(app.status)==='Pending'"
-              [class.selected]="normalizeStudentStatus(app.status)==='Selected'"
-              [class.rejected]="normalizeStudentStatus(app.status)==='Rejected'"
-              [class.shortlisted]="normalizeStudentStatus(app.status)==='Shortlisted'"
-              [class.interview]="normalizeStudentStatus(app.status)==='Interview'">
-          {{ normalizeStudentStatus(app.status) }}
-        </span>
-      </td>
+    <div class="kpi-card">
+      <div class="kpi-icon">👤</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Shortlisted</span>
+        <span class="kpi-value">{{ applications | statusCount:'SHORTLISTED' }}</span>
+      </div>
+    </div>
 
-      <td>
-        <select
-          class="status-select"
-          [value]="dropdownValue(app.status)"
-          (change)="onStatusSelectChange(app, $event)">
-          <option value="PENDING">Pending</option>
-          <option value="SHORTLISTED">Shortlisted</option>
-          <option value="INTERVIEW">Interview</option>
-          <option value="SELECTED">Selected</option>
-          <option value="REJECTED">Rejected</option>
-        </select>
-      </td>
-    </tr>
-  </table>
+    <div class="kpi-card">
+      <div class="kpi-icon">📅</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Interview</span>
+        <span class="kpi-value">{{ applications | statusCount:'INTERVIEW' }}</span>
+      </div>
+    </div>
 
-  <div *ngIf="applications.length === 0" class="no-apps">
-    No applications yet.
+    <div class="kpi-card">
+      <div class="kpi-icon">📈</div>
+      <div class="kpi-meta">
+        <span class="kpi-label">Selected</span>
+        <span class="kpi-value">{{ applications | statusCount:'SELECTED' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applications Table -->
+  <div class="card">
+   
+
+    <div class="table-wrap" *ngIf="applications.length > 0; else emptyState">
+      <table class="app-table">
+        <thead>
+          <tr>
+            <th>Company details</th>
+            <th>Applied date</th>
+            <th>Current status</th>
+            <th>Update status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let app of applications">
+            <td class="company-cell">
+              <div class="company-primary">{{ app.companyName }}</div>
+              <div class="company-secondary">{{ app.role }}</div>
+            </td>
+<td class="muted">{{ app.appliedAt | date:'M/d/yyyy':'UTC' }}</td>
+
+
+            <td>
+              <span
+                class="status-chip"
+                [class.pending]="normalizeStudentStatus(app.status)==='Pending'"
+                [class.shortlisted]="normalizeStudentStatus(app.status)==='Shortlisted'"
+                [class.interview]="normalizeStudentStatus(app.status)==='Interview'"
+                [class.selected]="normalizeStudentStatus(app.status)==='Selected'"
+                [class.rejected]="normalizeStudentStatus(app.status)==='Rejected'">
+                {{ normalizeStudentStatus(app.status) }}
+              </span>
+            </td>
+            <td>
+              <div class="pill-select">
+                <select
+                  aria-label="Update status"
+                  [value]="dropdownValue(app.status)"
+                  (change)="onStatusSelectChange(app, $event)">
+                  <option value="PENDING">Pending</option>
+                  <option value="SHORTLISTED">Shortlisted</option>
+                  <option value="INTERVIEW">Interview</option>
+                  <option value="SELECTED">Selected</option>
+                  <option value="REJECTED">Rejected</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #emptyState>
+      <div class="empty-state">No applications yet.</div>
+    </ng-template>
   </div>
 </div>

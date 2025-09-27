@@ -123,7 +123,7 @@ markDriveCompleted(driveId: number) {
   }
   
   getAllFeedbacks() {
-    return this.http.get<any[]>(this.baseUrl + '/admin/feedback-reports', { withCredentials: true });
+    return this.http.get<any[]>(this.baseUrl + '/feed/admin/feedback-reports', { withCredentials: true });
   }
   getAppliedDriveIds() {
     return this.http.get<number[]>(this.baseUrl + '/dashboard/applied-drives/ids', { withCredentials: true });

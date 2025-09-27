@@ -36,7 +36,10 @@ export class StudentDrivesHistory implements OnInit {
       next: (appliedIds: number[]) => {
         this.api.getDrives().subscribe({
           next: (drives) => {
-            this.appliedDrives = drives.filter((d) => appliedIds.includes(d.id));
+            const today = new Date();
+            this.appliedDrives = drives
+              .filter((d: any) => appliedIds.includes(d.id))
+              .map((d: any) => ({ ...d, appliedOn: today })); // stamp today locally
             this.filteredDrives = [...this.appliedDrives];
             this.filterDrives();
           },
@@ -58,34 +61,44 @@ export class StudentDrivesHistory implements OnInit {
   }
 
   filterDrives() {
-  const search = this.searchText.trim().toLowerCase();
-  const status = this.statusFilter.trim().toLowerCase();
+    const search = this.searchText.trim().toLowerCase();
+    const status = this.statusFilter.trim().toLowerCase();
 
-  console.log('Filtering drives with:', { search, status }); // For debugging
+    console.log('Filtering drives with:', { search, status });
 
-  this.filteredDrives = this.appliedDrives.filter((drive) => {
-    // Defensive check for drive.status and companyName
-    const driveStatus = drive.status ? drive.status.toLowerCase() : '';
-    const companyName = drive.companyName ? drive.companyName.toLowerCase() : '';
-    const roleName = drive.role ? drive.role.toLowerCase() : '';
+    this.filteredDrives = this.appliedDrives.filter((drive: any) => {
+      const driveStatus = drive.status ? drive.status.toLowerCase() : '';
+      const companyName = drive.companyName ? drive.companyName.toLowerCase() : '';
+      const roleName = drive.role ? drive.role.toLowerCase() : '';
 
-    const matchesStatus = !status || driveStatus === status;
-    const matchesSearch =
-      !search || companyName.includes(search) || roleName.includes(search);
+      const matchesStatus = !status || driveStatus === status;
+      const matchesSearch =
+        !search || companyName.includes(search) || roleName.includes(search);
 
-    return matchesStatus && matchesSearch;
-  });
+      return matchesStatus && matchesSearch;
+    });
 
-  console.log('Filtered drives:', this.filteredDrives);
-}
+    console.log('Filtered drives:', this.filteredDrives);
+  }
 
-private currentRoundFromStatus(status: string): string {
-  const s = (status || '').toUpperCase();
-  if (s === 'SHORTLISTED') return 'Shortlisted';
-  if (s === 'INTERVIEW') return 'Interview';
-  if (s === 'SELECTED') return 'Selected';
-  if (s === 'REJECTED') return 'Rejected';
-  // Treat APPLIED/PENDING as same
-  return 'Applied/Pending';
-}
+  private currentRoundFromStatus(status: string): string {
+    const s = (status || '').toUpperCase();
+    if (s === 'SHORTLISTED') return 'Shortlisted';
+    if (s === 'INTERVIEW') return 'Interview';
+    if (s === 'SELECTED') return 'Selected';
+    if (s === 'REJECTED') return 'Rejected';
+    return 'Applied/Pending';
+  }
+  
+
+  // apply and set applied date locally
+  applyToDrive(drive: any) {
+    const appliedOn = new Date(); // today
+    this.api.applyToDrive(drive.id).subscribe({
+      next: () => {
+        drive.appliedOn = appliedOn; // display this via template
+      },
+      error: (err) => console.error('applyToDrive failed:', err),
+    });
+  }
 }

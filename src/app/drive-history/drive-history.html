@@ -22,9 +22,7 @@
         <option value="Pending">Pending</option>
       </select>
   
-      <button class="filter-btn" (click)="filterDrives()">
-        <i class="fas fa-filter"></i> Filter
-      </button>
+      
     </div>
   
     <div *ngIf="filteredDrives.length === 0">
@@ -87,10 +85,7 @@
         </div>
   
         <!-- Bottom Row -->
-        <div class="drive-applied-date">
-          Applied on: {{ drive.appliedDate | date:'M/d/yyyy' }}
-          <span class="mode-badge">{{ drive.mode || 'On-Campus' }}</span>
-        </div>
+       
       </div>
     </div>
   </div>
