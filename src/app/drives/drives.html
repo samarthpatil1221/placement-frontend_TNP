@@ -1,0 +1,52 @@
+<app-student-navbar [username]="username"></app-student-navbar>
+
+<div class="drives-container">
+  <h2>Available Drives</h2>
+
+  <div class="drives-list">
+    <div *ngFor="let drive of drives" class="drive-card">
+      <div class="drive-icon">{{ drive.companyName.charAt(0) }}</div>
+
+      <div class="drive-header">
+        <h3>{{ drive.companyName }}</h3>
+        <span class="status-badge">Open</span>
+      </div>
+
+
+
+     <div class="drive-info">
+        <div><i class="bi bi-briefcase"></i> Software Engineer</div>
+        <!-- <div><i class="bi bi-briefcase"></i> Software Engineer</div> -->
+        <div><i class="bi bi-calendar-event"></i> {{ drive.dateOfDrive | date:'yyyy-MM-dd' }}</div>
+       <div><i class="bi bi-geo-alt"></i> {{ drive.location }}</div>
+    </div>
+
+
+      <div class="drive-actions">
+        <a class="details-link" (click)="openDetails(drive)">View Details</a>
+        <button class="apply-btn" (click)="applyToDrive(drive.id)">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Modal -->
+<div class="modal-backdrop" *ngIf="selectedDrive" (click)="closeDetails()"></div>
+<div class="modal-card" *ngIf="selectedDrive">
+  <div class="modal-header">
+    <h2>{{ selectedDrive.companyName }}</h2>
+    <button class="close-btn" (click)="closeDetails()">×</button>
+  </div>
+
+  <div class="modal-body">
+    <p><strong>Role:</strong> {{ selectedDrive.role }}</p>
+    <p><strong>Date:</strong> {{ selectedDrive.dateOfDrive | date:'yyyy-MM-dd' }}</p>
+    <p><strong>Location:</strong> {{ selectedDrive.location }}</p>
+    <p><strong>Description:</strong></p>
+    <p>{{ selectedDrive.jd }}</p>
+  </div>
+
+  <div class="modal-footer">
+    <button class="apply-btn" (click)="applyToDrive(selectedDrive.id)">Apply</button>
+  </div>
+</div>

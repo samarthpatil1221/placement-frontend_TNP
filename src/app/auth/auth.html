@@ -1,0 +1,20 @@
+<div class="modern-bg">
+  <div class="glass-card">
+    <div [class.fade-in]="isLoginActive" [class.fade-out]="!isLoginActive" *ngIf="isLoginActive" style="width:100%">
+      <h2>Login</h2>
+      <app-login></app-login>
+      <p class="switch">
+        Don’t have an account?
+        <button type="button" (click)="showRegister()">Register</button>
+      </p>
+    </div>
+    <div [class.fade-in]="!isLoginActive" [class.fade-out]="isLoginActive" *ngIf="!isLoginActive" style="width:100%">
+      <h2>Register</h2>
+      <app-register></app-register>
+      <p class="switch">
+        Already have an account?
+        <button type="button" (click)="showLogin()">Login</button>
+      </p>
+    </div>
+  </div>
+</div>

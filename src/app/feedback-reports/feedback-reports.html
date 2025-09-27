@@ -1,0 +1,58 @@
+<h2>Feedback Reports</h2>
+
+<div *ngIf="feedbackList.length === 0" class="no-feedback">
+  No feedback submitted yet.
+</div>
+
+<div *ngFor="let fb of feedbackList" class="feedback-card">
+  <h3>{{ fb.subject }} ({{ fb.company }})</h3>
+  
+  <p><strong>Category:</strong> {{ fb.category }}</p>
+
+
+  <p><strong>Details:</strong> {{ fb.details }}</p>
+
+  <p *ngIf="fb.suggestions"><strong>Suggestions:</strong> {{ fb.suggestions }}</p>
+
+  <!-- Interview-specific details -->
+  <div *ngIf="fb.category === 'interview'" class="interview-details">
+    <p><strong>Number of Interview Rounds:</strong> {{ fb.interviewRounds }}</p>
+    <p><strong>Interview Process Description:</strong> {{ fb.interviewDescription }}</p>
+    <p><strong>Round Reached:</strong> {{ fb.roundReached }}</p>
+    <p><strong>Interview Difficulty:</strong> {{ fb.interviewDifficulty }}</p>
+    <p><strong>Interview Date:</strong> {{ fb.interviewDate }}</p>
+    <p><strong>Interview Outcome:</strong> {{ fb.interviewOutcome }}</p>
+  </div>
+
+  <hr>
+</div>
+
+<style>
+  .feedback-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 12px rgb(0 0 0 / 0.05);
+    font-family: 'Poppins', sans-serif;
+  }
+  .interview-details p {
+    margin: 4px 0;
+    font-style: italic;
+    color: #444;
+  }
+  .no-feedback {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .fa-star {
+    color: #ffb400;
+  }
+  .fa-star-o {
+    color: #ccc;
+  }
+  p strong {
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,116 @@
+/* === Container === */
+.drive-form-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.drive-form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* === Heading === */
+.drive-form h2 {
+  text-align: center;
+  color: #3f51b5;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* === Progress Bar === */
+mat-progress-bar {
+  margin-bottom: 1.5rem;
+  height: 10px;
+  border-radius: 10px;
+}
+
+/* === Form Fields === */
+.drive-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Glass effect for fields */
+.glass-field {
+  background: rgba(255,255,255,0.2);
+  border-radius: 12px;
+}
+
+.mat-form-field.mat-focused .mat-form-field-wrapper {
+  background-color: rgba(255,255,255,0.3);
+  box-shadow: 0 0 6px rgba(63,81,181,0.3);
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #3f51b5 !important;
+}
+
+/* === Buttons === */
+button[type="submit"] {
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* === Back Button === */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #3f51b5;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #1a237e;
+  transform: translateX(-3px);
+}
+
+/* === Messages === */
+.error-msg, .success-msg {
+  text-align: center;
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeIn 0.4s forwards;
+  margin-top: 0.5rem;
+}
+
+.error-msg { color: #e53935; }
+.success-msg { color: #43a047; }
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .drive-form-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}

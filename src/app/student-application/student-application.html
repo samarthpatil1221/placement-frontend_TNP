@@ -1,0 +1,46 @@
+<!-- student-application.html -->
+<div class="applications-container">
+  <h2>Your Applications</h2>
+
+  <table *ngIf="applications.length > 0" class="app-table">
+    <tr>
+      <th>Company</th>
+      <th>Applied On</th>
+      <th>Status</th>
+      <th>Update</th>
+    </tr>
+
+    <tr *ngFor="let app of applications">
+      <td class="company-cell">{{ app.companyName }}</td>
+      <td>{{ app.appliedAt | date:'medium' }}</td>
+
+      <td>
+        <span class="status-pill"
+              [class.pending]="normalizeStudentStatus(app.status)==='Pending'"
+              [class.selected]="normalizeStudentStatus(app.status)==='Selected'"
+              [class.rejected]="normalizeStudentStatus(app.status)==='Rejected'"
+              [class.shortlisted]="normalizeStudentStatus(app.status)==='Shortlisted'"
+              [class.interview]="normalizeStudentStatus(app.status)==='Interview'">
+          {{ normalizeStudentStatus(app.status) }}
+        </span>
+      </td>
+
+      <td>
+        <select
+          class="status-select"
+          [value]="dropdownValue(app.status)"
+          (change)="onStatusSelectChange(app, $event)">
+          <option value="PENDING">Pending</option>
+          <option value="SHORTLISTED">Shortlisted</option>
+          <option value="INTERVIEW">Interview</option>
+          <option value="SELECTED">Selected</option>
+          <option value="REJECTED">Rejected</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngIf="applications.length === 0" class="no-apps">
+    No applications yet.
+  </div>
+</div>

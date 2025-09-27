@@ -1,0 +1,85 @@
+<form class="feedback-form" (ngSubmit)="submitFeedback()" #feedbackForm="ngForm">
+    <!-- Company -->
+    <div class="form-row">
+      <label for="company">Company Name *</label>
+      <input type="text" id="company" name="company" [(ngModel)]="feedback.company" placeholder="Enter company name" required />
+    </div>
+    <!-- Category -->
+    <div class="form-row">
+      <label for="category">Feedback Category *</label>
+      <select id="category" name="category" [(ngModel)]="feedback.category" required>
+        <option value="" disabled hidden>Select a category</option>
+        <option value="interview">Interview Experience</option>
+        <option value="portal">Portal Issue</option>
+        <option value="suggestion">Suggestion</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <p>Selected category: "{{ feedback.category }}"</p>
+    <!-- Interview-specific fields -->
+    <div *ngIf="feedback.category === 'interview'">
+      <div class="form-row">
+        <label for="interviewRounds">Number of interview rounds *</label>
+        <input type="number" id="interviewRounds" name="interviewRounds" [(ngModel)]="feedback.interviewRounds" min="1" required />
+      </div>
+      <div class="form-row">
+        <label for="interviewDescription">Interview process description *</label>
+        <textarea id="interviewDescription" name="interviewDescription" rows="3" [(ngModel)]="feedback.interviewDescription" placeholder="E.g., Aptitude → Technical → HR" required></textarea>
+      </div>
+      <div class="form-row">
+        <label for="roundReached">Till which round did you reach? *</label>
+        <input type="text" id="roundReached" name="roundReached" [(ngModel)]="feedback.roundReached" placeholder="E.g., Cleared Technical, Rejected in HR" required />
+      </div>
+      <div class="form-row">
+        <label for="interviewDifficulty">Difficulty level *</label>
+        <select id="interviewDifficulty" name="interviewDifficulty" [(ngModel)]="feedback.interviewDifficulty" required>
+          <option value="" disabled hidden>Select difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="interviewDate">Date or period of interview *</label>
+        <input type="date" id="interviewDate" name="interviewDate" [(ngModel)]="feedback.interviewDate" required />
+      </div>
+      <div class="form-row">
+        <label for="interviewOutcome">Interview outcome *</label>
+        <select id="interviewOutcome" name="interviewOutcome" [(ngModel)]="feedback.interviewOutcome" required>
+          <option value="" disabled hidden>Select outcome</option>
+          <option value="selected">Selected</option>
+          <option value="rejected">Rejected</option>
+          <option value="pending">Pending</option>
+        </select>
+      </div>
+    </div>
+    <!-- Rating -->
+
+      
+    <!-- Subject -->
+    <div class="form-row">
+      <label for="subject">Subject *</label>
+      <input type="text" id="subject" name="subject" [(ngModel)]="feedback.subject" placeholder="Brief summary of your feedback" required />
+    </div>
+    <!-- Detailed feedback -->
+    <div class="form-row">
+      <label for="details">Detailed Feedback *</label>
+      <textarea id="details" name="details" rows="5" [(ngModel)]="feedback.details" placeholder="Please provide detailed feedback..." required></textarea>
+    </div>
+    <!-- Suggestions -->
+    <div class="form-row">
+      <label for="suggestions">Suggestions for Improvement (Optional)</label>
+      <textarea id="suggestions" name="suggestions" rows="3" [(ngModel)]="feedback.suggestions" placeholder="Any suggestions for improving the process"></textarea>
+    </div>
+    <!-- Anonymous -->
+    <div class="form-row">
+      <label>
+        <input type="checkbox" name="anonymous" [(ngModel)]="feedback.anonymous" /> Submit feedback anonymously
+      </label>
+    </div>
+    <!-- Submit -->
+    <button type="submit" [disabled]="!feedbackForm.form.valid" class="submit-btn">
+      <i class="fas fa-paper-plane"></i> Submit Feedback
+    </button>
+  </form>
+  

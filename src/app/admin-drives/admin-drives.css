@@ -1,0 +1,299 @@
+/* === General Page Styling === */
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* === Header === */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #56ecd3, #42f5dd);
+  color: white;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.header h2 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #0c0909;
+}
+
+.header button {
+  color: #fff;
+}
+
+/* Add New Drive Button */
+.add-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: #1976d2 !important;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-transform: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  background: #e3f2fd;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* === Filter Section === */
+.filter-section {
+  background: #fff;
+  border-radius: 12px;
+  margin: 1.5rem 2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.quick-filters button {
+  transition: all 0.2s ease;
+}
+.quick-filters button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* === Drives Grid === */
+.drives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+}
+
+/* === Drive Cards === */
+.drive-card {
+  border-radius: 14px;
+  background: linear-gradient(145deg, #ffffff, #f7f9fc);
+  padding: 1.3rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: none;
+  position: relative;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.drive-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+/* Company Name */
+.company-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1565c0;
+  margin-bottom: 0.3rem;
+}
+
+/* Applications Badge */
+mat-card-subtitle {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+mat-card-subtitle:hover {
+  background: #bbdefb;
+}
+
+/* Header Actions (Edit/Complete) */
+.header-actions {
+  display: flex;
+  gap: 6px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.header-actions button {
+  transition: transform 0.15s ease;
+}
+.header-actions button:hover {
+  transform: scale(1.1);
+}
+
+/* Job Description */
+.job-description {
+  font-size: 0.87rem;
+  color: #555;
+  font-style: italic;
+  margin-top: 0.6rem;
+}
+
+/* Completed Card */
+.completed-card {
+  border: 2px solid #4caf50;
+  background: linear-gradient(145deg, #f1f8e9, #e8f5e9);
+}
+
+/* Drives History Section */
+.history-section {
+  margin: 2rem;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.history-section h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.export-buttons button {
+  background: #1976d2;
+  color: white !important;
+  margin-bottom: 0.5rem;
+}
+
+.export-buttons button:hover {
+  background: #1565c0;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  color: #999;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .drives-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .filter-section {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+/* === Flip Card Container === */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  position: relative;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* Flip only when .flipped class is added */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back Cards */
+.drive-card, .drive-card-back {
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.drive-card {
+  background: linear-gradient(145deg, #ffffff, #f5f7fa);
+  cursor: default; /* Remove pointer for hover */
+}
+
+.drive-card-back {
+  background: linear-gradient(145deg, #42a5f5, #1976d2);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  border-radius: 16px;
+  align-items: flex-start;
+}
+
+/* Back Side Typography */
+.drive-card-back h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+.drive-card-back p {
+  margin: 0.3rem 0;
+}
+.drive-card-back button {
+  margin-top: 1rem;
+}
+
+/* Front Card Hover Lift */
+.drive-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+}
+
+/* Completed Cards */
+.completed-card {
+  border: 2px solid #4caf50;
+  background: linear-gradient(145deg, #f1f8e9, #e8f5e9);
+}
+
+.completed-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+/* Flip Trigger Cursor */
+.flip-trigger {
+  cursor: pointer;
+}
+
+/* Remove old hover-based flip */
+.drive-card-content:hover ~ .flip-card-inner {
+  transform: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .drives-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .filter-section {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}

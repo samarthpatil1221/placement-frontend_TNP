@@ -1,0 +1,32 @@
+/* Main layout wrapper */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #f3f4f6; /* light bg for contrast */
+}
+
+/* Sidebar already styled with fixed width */
+.sidebar-nav {
+  flex-shrink: 0;
+  transition: width 0.4s ease;
+  z-index: 1000;
+}
+
+/* Content area */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  transition: margin-left 0.4s ease;
+  overflow-y: auto;
+}
+
+/* If you want sidebar to overlay instead of pushing */
+body.sidebar-open .main-content {
+  margin-left: 250px; /* expanded sidebar width */
+}
+
+.main-content {
+  margin-left: 270px; /* same as sidebar width */
+  padding: 20px;
+}

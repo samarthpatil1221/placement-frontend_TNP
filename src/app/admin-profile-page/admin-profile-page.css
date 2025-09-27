@@ -1,0 +1,86 @@
+.profile-page {
+    max-width: 480px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgb(131 71 136 / 0.13);
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #6a44eb;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #3d3d5c;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1.5px solid #c6c6d1;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #6a44eb;
+  }
+  
+  .error {
+    color: #e74c3c;
+    font-size: 0.88rem;
+    margin-top: 0.35rem;
+  }
+  
+  .form-buttons {
+    text-align: center;
+  }
+  
+  button {
+    background-color: #6a44eb;
+    color: white;
+    padding: 11px 28px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 1.1rem;
+  }
+  
+  button:hover:not([disabled]) {
+    background-color: #582ede;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .message {
+    margin-top: 1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .message.success {
+    color: #27ae60;
+  }
+  
+  .message.error {
+    color: #e74c3c;
+  }

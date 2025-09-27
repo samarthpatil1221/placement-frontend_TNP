@@ -1,0 +1,49 @@
+<mat-card>
+    <h2>Edit Drive</h2>
+    <form [formGroup]="driveForm" (ngSubmit)="save()">
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Company Name</mat-label>
+        <input matInput formControlName="companyName" />
+        <mat-error *ngIf="driveForm.get('companyName')?.hasError('required')">
+          Company Name is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Job Description</mat-label>
+        <textarea matInput formControlName="jd" rows="4"></textarea>
+        <mat-error *ngIf="driveForm.get('jd')?.hasError('required')">
+          Job Description is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Date of Drive</mat-label>
+        <input matInput type="date" formControlName="dateOfDrive" />
+        <mat-error *ngIf="driveForm.get('dateOfDrive')?.hasError('required')">
+          Date of Drive is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" />
+        <mat-error *ngIf="driveForm.get('location')?.hasError('required')">
+          Location is required
+        </mat-error>
+      </mat-form-field>
+  
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  
+      <div class="buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+          Save
+        </button>
+        <button mat-button type="button" (click)="cancel()" [disabled]="loading">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </mat-card>
+  

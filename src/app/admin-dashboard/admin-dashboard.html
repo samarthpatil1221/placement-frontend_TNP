@@ -1,0 +1,177 @@
+<mat-sidenav-container class="dashboard-container">
+  <mat-sidenav
+    mode="side"
+    [opened]="sidebarOpen"
+    class="sidenav"
+    [class.sidenav-closed]="!sidebarOpen">
+
+    <!-- Sidebar Header -->
+    <div class="sidenav-header">
+      <img matListIcon src="asdmin.gif" alt="Dashboard" class="animated-icon">
+      <span *ngIf="sidebarOpen" class="logo">Placement Admin</span>
+    </div>
+
+    <!-- Navigation Sections -->
+    <mat-nav-list>
+      <br>
+
+      <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active" matTooltip="Dashboard">
+        <img matListIcon src="dashboard.gif" alt="Dashboard" class="animated-icon">
+        <span *ngIf="sidebarOpen">Dashboard</span>
+      </a>
+   <br>
+      <a mat-list-item routerLink="/admin/applications" routerLinkActive="active" matTooltip="Applications" class="with-badge">
+        <img matListIcon src="application.gif" alt="Dashboard" class="animated-icon">
+        <span *ngIf="sidebarOpen">Applications</span>
+        
+      </a>
+
+      <br>
+
+      <a mat-list-item routerLink="/admin/drives" routerLinkActive="active" matTooltip="Drives">
+        <img matListIcon src="drives.gif" alt="Dashboard" class="animated-icon">
+        <span *ngIf="sidebarOpen">Drives</span>
+      </a>
+     <br>
+      <a mat-list-item routerLink="/admin/users" routerLinkActive="active" matTooltip="Users" class="with-badge">
+        <img matListIcon src="user.gif" alt="Dashboard" class="animated-icon">
+        <span *ngIf="sidebarOpen">Users</span>
+        
+      </a>
+
+     <br>
+     <a mat-list-item routerLink="/admin/feedback-reports" routerLinkActive="active" matTooltip="Users" class="with-badge">
+      <img matListIcon src="user.gif" alt="Dashboard" class="animated-icon">
+      <span *ngIf="sidebarOpen">Feedback Reports </span>
+      
+    </a>
+    <br>
+
+
+      <a mat-list-item (click)="logout()" style="cursor:pointer" matTooltip="Logout">
+        <img matListIcon src="logout.gif" alt="Dashboard" class="animated-icon">
+        <span *ngIf="sidebarOpen">Logout</span>
+      </a>
+    </mat-nav-list>
+   <br><br><br><br><br><br><br><br><br><br><br>
+    <!-- Profile Card (bottom) -->
+   
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="topbar">
+      
+      <span class="toolbar-title">Admin Dashboard</span>
+      <span class="spacer"></span>
+      <div class="admin-profile-badge">
+       
+       
+      </div>
+    </mat-toolbar>
+
+    <div class="welcome-banner">
+      Welcome back! Here's what's happening with your placements.
+    </div>
+    <div class="cards-row">
+      <div class="stat-card user-card">
+        <div class="stat-icon">
+          <img src="users1.gif" alt="Group Icon" class="stat-icon-img">
+        </div>
+        
+        <div>
+          <div class="stat-value">{{ totalUsers }}</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+      </div>
+      <div class="stat-card drives-card">
+        <div class="stat-icon">
+          <img src="calendar.gif" alt="Group Icon" class="stat-icon-img">
+        </div>
+        
+        <div>
+          <div class="stat-value">{{ totalDrives }}</div>
+          <div class="stat-label">Total Drives</div>
+        </div>
+      </div>
+      <div class="stat-card apps-card">
+        <div class="stat-icon">
+          <img src="apply.gif" alt="Group Icon" class="stat-icon-img">
+        </div>
+        <div>
+          <div class="stat-value">{{ totalApplications }}</div>
+          <div class="stat-label">Total Applications</div>
+        </div>
+      </div>
+      <div class="stat-card placement-card">
+        <div class="stat-icon">
+          <img src="place.gif" alt="Group Icon" class="stat-icon-img">
+        </div>
+        <div>
+          <div class="stat-value">{{ placementRate }}%</div>
+          <div class="stat-label">Placement Rate</div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="main-row">
+      <div class="main-col main-left glass">
+        <div class="main-card-header">
+          <div class="main-card-title">
+            <img src="upcoming.gif" alt="Calendar" class="icon-gif">
+            Upcoming Drives
+          </div>
+          <button class="view-all-link" (click)="goToDrives()">View All</button>
+        </div>
+        <div class="drives-list scrollable-list light-cards-list" tabindex="0">
+          <div *ngFor="let drive of upcomingDrives" class="upcoming-drive-card">
+            <div class="drive-header-row">
+              <div class="drive-icon-box">
+                <mat-icon>business_center</mat-icon>
+              </div>
+              <span class="drive-title-strong">{{ drive.companyName }}</span>
+              <span *ngIf="drive.completed" class="drive-status-pill">Completed</span>
+              
+            </div>
+            <div class="drive-sub-row">
+              <mat-icon class="row-icon">calendar_today</mat-icon>
+              <span>{{ drive.dateOfDrive | date:'dd/MM/yyyy' }}</span>
+              <mat-icon class="row-icon">location_on</mat-icon>
+              <span>{{ drive.location }}</span>
+            </div>
+            <div class="drive-description">{{ drive.jd | slice:0:48 }}...</div>
+          </div>
+        </div>
+        
+          </div>
+        
+          <div class="main-col main-right glass company-dist-card">
+            <div class="main-card-header dist-header">
+              <div class="main-card-title">
+                <img src="com.gif" alt="Calendar" class="icon-gif">
+                Company Distribution
+              </div>
+              <div class="growth-indicator"><mat-icon>trending_up</mat-icon> <span>+12% this month</span></div>
+            </div>
+            <div class="company-bar-charts" tabindex="0">
+              <div *ngFor="let c of companyStats" class="company-dist-bar-card">
+                <div class="dist-bar-header">
+                  <div class="dist-company-icon"><mat-icon>apartment</mat-icon></div>
+                  <div class="dist-company-title">{{ c.companyName }}</div>
+                </div>
+                <div class="company-bar">
+                  <span class="bar-applied" [ngStyle]="{'width': c.appliedPercent + '%'}"></span>
+                  <span class="bar-notapplied" [ngStyle]="{'width': c.notAppliedPercent + '%'}"></span>
+                </div>
+                <div class="dist-legend-row">
+                  <span class="legend-applied">Applied <b>({{ c.appliedCount }})</b></span>
+                  <span class="legend-notapplied">Not Applied <b>({{ totalUsers-c.appliedCount }})</b></span>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

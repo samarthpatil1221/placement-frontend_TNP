@@ -1,0 +1,85 @@
+.profile-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3eefd;
+  }
+  .profile-card {
+    min-width: 350px;
+    max-width: 410px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(30,60,120,0.15);
+    padding: 38px 28px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  h3 {
+    color: #1976d2;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  
+  .profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .profile-field label {
+    color: #444;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .profile-field input {
+    padding: 9px 13px;
+    border: 1.5px solid #1976d2;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+  
+  .save-btn {
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 6px 0 2px 0;
+  }
+  .save-btn:hover {
+    background: #1565c0;
+  }
+  
+  .logout-btn {
+    margin-top: 2px;
+    width: 100%;
+    padding: 9px 0;
+    background: #c62828;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .logout-btn:hover {
+    background: #b71c1c;
+  }
+  
+  .success-msg {
+    color: #1b5e20;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .error-msg {
+    color: #b71c1c;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  

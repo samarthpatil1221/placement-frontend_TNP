@@ -1,0 +1,154 @@
+.login-form {
+  width: 100%;
+  max-width: 360px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Floating label inputs */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 16px 2px 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  color: #222;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: border 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+
+.input-group input:focus {
+  border: 1px solid #7a27e8;
+  box-shadow: 0 0 8px rgba(122,39,232,0.25);
+  background: #fff;
+  transform: scale(1.01);
+}
+
+.input-group label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 0.95rem;
+  color: #666;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 10px;
+  font-size: 0.75rem;
+  color: #7a27e8;
+  background: #fff;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.input-group .icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.input-group.has-error input {
+  border: 1px solid #e63946;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.remember input {
+  accent-color: #7a27e8;
+  margin-right: 6px;
+}
+
+.forgot {
+  color: #7a27e8;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+  color: #5a1cc1;
+}
+
+/* Button with states */
+.main-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #7a27e8 0%, #bd69cc 100%);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.7rem;
+  box-shadow: 0 4px 14px rgba(186, 61, 146, 0.4);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.main-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #bd69cc 0%, #7a27e8 100%);
+  transform: translateY(-2px);
+}
+
+.main-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-msg {
+  color: #e63946;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* Spinner animation */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255,255,255,0.6);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

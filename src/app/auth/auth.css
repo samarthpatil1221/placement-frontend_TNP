@@ -1,0 +1,166 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background: #f7f8fa;
+}
+
+/* White-themed Background Container */
+.modern-bg {
+  min-height: 100vh;
+  min-width: 100vw;
+  background: #f7f8fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* Glass Card adjusted for White theme */
+.glass-card {
+  position: relative;
+  z-index: 2;
+  min-width: 460px;
+  max-width: 400px;
+  margin: 48px 0;
+  padding: 44px 36px 28px 36px;
+  background: rgba(255, 255, 255, 0.9); /* More opaque white */
+  box-shadow:
+    0 14px 40px 0 rgba(0, 0, 0, 0.07),
+    0 0 33px rgba(0, 0, 0, 0.05),
+    0 6px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 22px;
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border: 2px solid rgba(200, 200, 200, 0.5);
+  animation: popping-in 0.76s cubic-bezier(0.44, 1.6, 0.7, 0.98);
+}
+
+/* Keyframe unchanged */
+@keyframes popping-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(36px);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Headings with dark text for white background */
+.glass-card h2 {
+  color: #3b3b3b;
+  font-size: 2.4rem;
+  margin-bottom: 2.4rem !important;
+  /* Remove fixed left margin */
+  margin-left: 0;
+  /* Center text horizontally */
+  text-align: center;
+  letter-spacing: 2.2px;
+  font-weight: 900;
+  text-shadow: 0 3px 10px rgba(200, 200, 200, 0.35);
+  background: none;
+  -webkit-background-clip: none;
+  -webkit-text-fill-color: initial;
+  user-select: none;
+}
+
+
+/* Toggle switch paragraph */
+.switch {
+  text-align: center;
+  margin: 1.4rem 0 0 0;
+  color: #5a5a5a;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* Button styling in switch */
+.switch button {
+  background: transparent;
+  border: none;
+  color: #6a6aff;
+  font-weight: 600;
+  margin-left: 4px;
+  font-size: 1.08rem;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.22s ease-in-out, text-decoration 0.22s ease-in-out;
+}
+
+.switch button:hover {
+  text-decoration: underline;
+  color: #4040d2;
+}
+
+/* Crossfade Animations unchanged */
+.fade-in {
+  animation: fade-in 0.5s cubic-bezier(0.7, -0.09, 0.24, 1.13);
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+.fade-out {
+  animation: fade-out 0.5s cubic-bezier(0.7, -0.09, 0.24, 1.13);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Responsive for smaller devices */
+@media (max-width: 600px) {
+  .glass-card {
+    min-width: 95vw;
+    max-width: none;
+    padding: 24px 16px 20px 16px;
+    border-radius: 18px;
+  }
+
+  .glass-card h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1.8rem !important;
+  }
+
+  .switch {
+    font-size: 1rem;
+  }
+
+  .switch button {
+    font-size: 1rem;
+  }
+}

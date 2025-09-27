@@ -1,0 +1,31 @@
+<div class="header">
+  <button mat-icon-button (click)="goBack()" aria-label="Back to Drives List">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h2>Drive Details</h2>
+</div>
+<div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+<div *ngIf="drive" class="drive-detail-container">
+  <mat-card>
+    <mat-card-title>{{ drive.companyName }}</mat-card-title>
+    <mat-card-subtitle>
+      <strong>Date:</strong> {{ drive.dateOfDrive | date:'mediumDate' }} |
+      <strong>Location:</strong> {{ drive.location }}
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p><strong>Job Description:</strong></p>
+      <p>{{ drive.jd }}</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card style="margin-top: 1.5rem;">
+    <mat-card-title>Applications ({{ applications.length }})</mat-card-title>
+    <mat-card-content *ngIf="applications.length === 0">No students have applied for this drive yet.</mat-card-content>
+    <mat-card-content *ngIf="applications.length > 0">
+      <ul>
+        <li *ngFor="let app of applications">
+          <strong>{{ app.studentName || 'Unknown Student' }}</strong> - Applied on {{ app.appliedAt | date:'mediumDate' }} - Status: {{ app.status }}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>

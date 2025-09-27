@@ -1,0 +1,58 @@
+<div class="dashboard">
+  <h2>Welcome back, {{ profile.fullName }}!</h2>
+  <p>Here's what's happening with your training and placement journey.</p>
+
+<div class="stats-grid">
+  <mat-card>
+    <mat-card-title>Total Drives</mat-card-title>
+    <mat-card-content>{{ stats.totalDrives }}</mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Total Applied</mat-card-title>
+    <mat-card-content>{{ stats.applicationsCount }}</mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Skills</mat-card-title>
+<mat-card-content>{{ profile.skills ? (profile.skills | keyvalue).length : 0 }}</mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Profile Completion</mat-card-title>
+    <mat-card-content>{{ stats.profileCompletion }}%</mat-card-content>
+  </mat-card>
+</div>
+
+
+
+  <div class="activity-row" style="display: flex; gap: 24px;">
+    <mat-card style="flex: 1;">
+      <mat-card-title>Recent Activities</mat-card-title>
+      <mat-list>
+        <mat-list-item *ngFor="let act of activities">{{ act.activity }}</mat-list-item>
+      </mat-list>
+    </mat-card>
+
+    <mat-card style="flex: 1;">
+      <mat-card-title>Upcoming Unapplied Drives</mat-card-title>
+      <mat-list>
+        <mat-list-item *ngFor="let drive of upcomingDrives">
+  {{ drive.companyName }} - {{ drive.dateOfDrive | date:'mediumDate' }} ({{ drive.location }})
+</mat-list-item>
+
+      </mat-list>
+    </mat-card>
+  </div>
+  <mat-card>
+    <mat-card-title>{{ profile.fullName }}</mat-card-title>
+    <mat-card-subtitle>{{ profile.branch }} ({{ profile.year }}) • CGPA: {{ profile.cgpa }}</mat-card-subtitle>
+    <p>Email: {{ profile.email }}</p>
+    <p>Phone: {{ profile.phone }}</p>
+    <p>Location: {{ profile.location }}</p>
+    <p>Graduation: {{ profile.graduation }}</p>
+
+    <h4>Skills</h4>
+    <div *ngFor="let skill of profile.skills | keyvalue">
+      <p>{{ skill.key }}: {{ skill.value }}%</p>
+      <mat-progress-bar mode="determinate" [value]="skill.value"></mat-progress-bar>
+    </div>
+  </mat-card>
+</div>

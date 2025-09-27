@@ -1,0 +1,208 @@
+.drives-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.drives-container h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #16a085;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Grid Layout for cards */
+.drives-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+/* Card */
+.drive-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.drive-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(22, 160, 133, 0.25);
+}
+
+/* Top Icon */
+.drive-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #8e44ad;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 14px;
+}
+
+/* Company & Status */
+.drive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drive-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.status-badge {
+  background: #e9f9f3;
+  color: #16a085;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+/* Role */
+.drive-role {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Info Section */
+.drive-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #444;
+  margin-top: 10px;
+}
+
+.drive-info i {
+  margin-right: 6px;
+  color: #16a085;
+}
+.drive-info div i,
+.modal-body p i {
+  margin-right: 6px;
+  color: #555;
+}
+
+
+/* Actions */
+.drive-actions {
+margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-link {
+  color: #6c5ce7;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.details-link:hover {
+  text-decoration: underline;
+}
+
+.apply-btn {
+  padding: 7px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #16a085;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.apply-btn:hover {
+  background-color: #138d75;
+  transform: translateY(-2px);
+}
+
+/* Short description (1 line) */
+.drive-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 6px 0;
+}
+
+
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+/* Modal card */
+.modal-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  width: 500px;
+  max-width: 90%;
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-body p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.modal-footer {
+  margin-top: 14px;
+  text-align: right;
+}

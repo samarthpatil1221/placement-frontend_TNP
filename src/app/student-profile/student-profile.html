@@ -1,0 +1,36 @@
+<app-student-navbar [username]="username"></app-student-navbar>
+<div class="profile-container">
+  <!-- Profile Form: shown only if mode is 'fill' or 'edit' -->
+  <form *ngIf="mode === 'fill' || mode === 'edit'" class="profile-card" (ngSubmit)="updateProfile()">
+    <h3>My Profile</h3>
+    <div class="profile-field"><label>Full Name</label>
+      <input [(ngModel)]="student.fullName" name="fullName" required /></div>
+    <div class="profile-field"><label>Email</label>
+      <input [(ngModel)]="student.email" name="email" type="email" required /></div>
+    <div class="profile-field"><label>Phone</label>
+      <input [(ngModel)]="student.phone" name="phone" required /></div>
+    <div class="profile-field"><label>Batch</label>
+      <input [(ngModel)]="student.batch" name="batch" /></div>
+    <div class="profile-field"><label>College</label>
+      <input [(ngModel)]="student.college" name="college" /></div>
+    <div class="profile-field"><label>Resume</label>
+      <input type="file" (change)="onFileChange($event)" />
+      <div *ngIf="student.resumePath"><a [href]="student.resumePath" target="_blank">View Uploaded Resume</a></div>
+    </div>
+    <button type="submit" class="save-btn">Save</button>
+    <button type="button" (click)="cancelEdit()" class="edit-btn" *ngIf="mode === 'edit'">Cancel</button>
+    <div *ngIf="success" class="success-msg">{{ success }}</div>
+    <div *ngIf="error" class="error-msg">{{ error }}</div>
+  </form>
+  <!-- Details View: shown only if mode is 'view' -->
+  <div *ngIf="mode === 'view'" class="profile-card">
+    <h3>My Profile</h3>
+    <div><strong>Full Name:</strong> {{ student.fullName }}</div>
+    <div><strong>Email:</strong> {{ student.email }}</div>
+    <div><strong>Phone:</strong> {{ student.phone }}</div>
+    <div><strong>Batch:</strong> {{ student.batch }}</div>
+    <div><strong>College:</strong> {{ student.college }}</div>
+    <div *ngIf="student.resumePath"><a [href]="student.resumePath" target="_blank">View Resume</a></div>
+    <button (click)="editProfile()" class="edit-btn">Edit</button>
+  </div>
+</div>

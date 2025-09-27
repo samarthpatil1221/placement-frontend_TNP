@@ -1,0 +1,72 @@
+/* Container styles for spacing */
+:host {
+  display: block;
+  padding: 1rem 2rem;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+/* Header styling */
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Angular Material table styling tweaks */
+mat-table {
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Header row style */
+mat-header-row {
+  background-color: #5ff1cf;
+  color: rgb(17, 12, 12);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Data rows style */
+mat-row {
+  font-size: 0.95rem;
+  color: #34495e;
+}
+
+/* Hover effect for rows */
+mat-row:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
+}
+
+/* Cell padding for neat layout */
+mat-cell, mat-header-cell {
+  padding: 16px 24px;
+}
+
+/* Responsive text wrap for roles column */
+mat-cell:last-child {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Scroll for table overflow if needed */
+mat-table {
+  max-height: 70vh;
+  display: block;
+  overflow: auto;
+}
+/* Existing styles omitted for brevity */
+
+/* Optional: add some padding for the action buttons */
+mat-cell button {
+  margin-left: 8px;
+}
+.back-button-container {
+  margin-bottom: 1rem;
+}
+

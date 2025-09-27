@@ -1,0 +1,55 @@
+<div class="drive-form-container">
+
+  <!-- Back Button -->
+  <button mat-icon-button class="back-btn" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon> Back
+  </button>
+
+  <h2>Add New Drive</h2>
+
+  <!-- Progress Bar -->
+  <mat-progress-bar mode="determinate" [value]="completionProgress"></mat-progress-bar>
+
+  <form (ngSubmit)="addDrive()" #form="ngForm" class="drive-form">
+
+    <mat-form-field appearance="fill" class="full-width glass-field">
+      <mat-label>Company Name</mat-label>
+      <input matInput name="companyName" [(ngModel)]="companyName" required />
+      <mat-icon matSuffix>business</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width glass-field">
+      <mat-label>Job Description</mat-label>
+      <textarea matInput name="jd" rows="4" [(ngModel)]="jd" required></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width glass-field">
+      <mat-label>Date of Drive</mat-label>
+      <input 
+        matInput 
+        [matDatepicker]="picker" 
+        name="dateOfDrive" 
+        [(ngModel)]="dateOfDrive" 
+        [min]="today" 
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="month"></mat-datepicker>
+      
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width glass-field">
+      <mat-label>Location</mat-label>
+      <input matInput name="location" [(ngModel)]="location" required />
+      <mat-icon matSuffix>location_on</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="!form.form.valid" type="submit">
+      <mat-icon>add_circle</mat-icon> Add Drive
+    </button>
+
+    <p class="error-msg" *ngIf="error">{{ error }}</p>
+    <p class="success-msg" *ngIf="success">{{ success }}</p>
+  </form>
+</div>

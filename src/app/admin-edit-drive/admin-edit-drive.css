@@ -1,0 +1,15 @@
+.full-width {
+    width: 100%;
+  }
+  
+  .error {
+    color: red;
+    margin: 10px 0;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+  }
+  

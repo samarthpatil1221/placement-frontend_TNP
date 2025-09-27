@@ -1,0 +1,96 @@
+<div class="history-container">
+    <h2>Drive History</h2>
+    <p>Track your placement drive applications and results</p>
+  
+    <div class="search-status-row">
+      <input
+        type="text"
+        class="search-bar"
+        placeholder="Search by company Name..."
+        [value]="searchText"
+        (input)="onSearchTextChange($event)"
+      />
+  
+      <select
+        class="status-filter"
+        [value]="statusFilter"
+        (change)="onStatusFilterChange($event)"
+      >
+        <option value="">All Status</option>
+        <option value="Selected">Selected</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Pending">Pending</option>
+      </select>
+  
+      <button class="filter-btn" (click)="filterDrives()">
+        <i class="fas fa-filter"></i> Filter
+      </button>
+    </div>
+  
+    <div *ngIf="filteredDrives.length === 0">
+      <p>No applied drives found.</p>
+    </div>
+  
+    <!-- Drives List -->
+    <div class="history-list list-view">
+      <div *ngFor="let drive of filteredDrives" class="history-card">
+        <div class="drive-row">
+          <!-- Left Section -->
+          <div class="drive-left">
+            <div class="drive-icon">
+              <img src="com.gif" alt="Company Logo" />
+            </div>
+            <div class="drive-info">
+              <div class="drive-title">{{ drive.companyName }}</div>
+              <div class="drive-role">{{ drive.role }}</div>
+            </div>
+          </div>
+  
+          <!-- Middle Section -->
+          <div class="drive-details">
+          <div>
+              <img src="calender.png" alt="Date" class="info-icon" />
+              {{ drive.dateOfDrive | date:'M/d/yyyy' }}
+          </div>
+          <div>
+              <img src="location.png" alt="Location" class="info-icon" />
+              {{ drive.location }}
+          </div>
+          <div *ngIf="drive.ctc" class="ctc-text">
+              <img src="assets/icons/money.svg" alt="CTC" class="info-icon" />
+              {{ drive.ctc }} LPA
+          </div>
+          </div>
+  
+  
+          <!-- Right Section -->
+          <div class="drive-actions">
+            <span class="status-badge selected">
+    <svg class="status-badge-icon" width="18" height="18" viewBox="0 0 20 20" fill="none">
+      <circle cx="10" cy="10" r="9" stroke="#22c55e" stroke-width="2" fill="#d1fadf"/>
+      <path d="M6.5 10.4L9 13L14 8" stroke="#198754" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Applied
+  </span>
+            <div class="current-round">
+              Current Round: {{ drive.currentRound }}
+            </div>
+            <div class="action-links">
+              <a *ngIf="drive.detailsUrl" [routerLink]="drive.detailsUrl" class="view-link">
+                View Details
+              </a>
+              <a *ngIf="drive.downloadUrl" [href]="drive.downloadUrl" class="download-link">
+                Download
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Bottom Row -->
+        <div class="drive-applied-date">
+          Applied on: {{ drive.appliedDate | date:'M/d/yyyy' }}
+          <span class="mode-badge">{{ drive.mode || 'On-Campus' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
